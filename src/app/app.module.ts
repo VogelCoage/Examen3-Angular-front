@@ -14,7 +14,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProveedorDetalleComponent } from './proveedor-detalle/proveedor-detalle.component';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
+const MaterialComponents = [ 
+  MatButtonModule
+];
 
 @NgModule({
   declarations: [
@@ -30,7 +35,9 @@ import { MatInputModule } from '@angular/material/input';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [ProveedorService],
   bootstrap: [AppComponent]

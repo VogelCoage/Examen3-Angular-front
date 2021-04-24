@@ -8,19 +8,11 @@
 <mat-card>
 <app-proveedor-detalle [proveedor]="selectedProveedor"></app-proveedor-detalle>
 </mat-card>
-
+<br>
 <mat-card>
-
   <h2>Agregar Proveedor</h2>
 
 <div>
-  <mat-card>
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre</mat-label>
-      <input matInput for="new-proveedor" #proveedorName>
-    </mat-form-field>
-  </mat-card>
-
 
   <mat-card>
     <mat-form-field appearance="fill">
@@ -29,13 +21,17 @@
     </mat-form-field>
   </mat-card>
 
-
-
+  <mat-card>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre: </mat-label>
+      <input matInput for="new-proveedor" #proveedorName>
+    </mat-form-field>
+  </mat-card>  
 
   <mat-card>
    <!-- (click) passes input value to agregar() and then clears the input -->
-   <button class="add-button" (click)="agregar(proveedorName.value, proveedorId.value ); proveedorName.value=''; proveedorId.value=''  " >
-    Agregue un proveedor
+   <button mat-icon-button color="primary" (click)="agregar(proveedorName.value, proveedorId.value ); proveedorName.value=''; proveedorId.value=''  " >
+      <mat-icon>person_add</mat-icon> 
   </button>
   </mat-card>
 

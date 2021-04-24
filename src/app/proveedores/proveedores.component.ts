@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { Proveedor } from '../proveedor'
 import { ProveedorService } from '../proveedor.service'
-import { MatCard } from '@angular/material/card';
-import {MatListModule} from '@angular/material/list';
-
 
 @Component({
   selector: 'app-proveedor',
@@ -33,9 +30,7 @@ export class ProveedoresComponent implements OnInit {
 
   onSelect(proveedor: Proveedor): void {
     this.selectedProveedor = proveedor;
-  }
-
-  
+  }  
 
   agregar(name: string, id:number): void {
     name = name.trim();
