@@ -1,40 +1,66 @@
-<ul class="proveedores">
-  <li *ngFor="let proveedor of proveedores"
-    [class.selected]="proveedor === selectedProveedor"  (click)="onSelect(proveedor)">
-    <span class="badge">{{proveedor.id}}</span> {{proveedor.name}}
-  </li>
-</ul>
-  
-<mat-card>
-<app-proveedor-detalle [proveedor]="selectedProveedor"></app-proveedor-detalle>
-</mat-card>
-<br>
-<mat-card>
-  <h2>Agregar Proveedor</h2>
+<header>
+  <mat-toolbar color="primary">Usando Angular 11 Bootstrap 4</mat-toolbar>
+</header>
 
-<div>
-
-  <mat-card>
-    <mat-form-field appearance="fill">
-      <mat-label>Id:</mat-label>
-      <input matInput for="new-proveedor" #proveedorId>
-    </mat-form-field>
-  </mat-card>
-
-  <mat-card>
-    <mat-form-field appearance="fill">
-      <mat-label>Nombre: </mat-label>
-      <input matInput for="new-proveedor" #proveedorName>
-    </mat-form-field>
-  </mat-card>  
-
-  <mat-card>
-   <!-- (click) passes input value to agregar() and then clears the input -->
-   <button mat-icon-button color="primary" (click)="agregar(proveedorName.value, proveedorId.value ); proveedorName.value=''; proveedorId.value=''  " >
-      <mat-icon>person_add</mat-icon> 
-  </button>
-  </mat-card>
-
+<div class="spinner-container" *ngIf="dataSource.cargando$ | async">
+  <mat-spinner></mat-spinner>
 </div>
-</mat-card>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card>
+    <div flex>
+            <div class="example-table-container">  
+              <mat-card>
+                <mat-table [dataSource]="dataSource" class="example-table" >
+                  <!-- Title Column -->
+                  <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+                  </ng-container>
+
+                  <!-- State Column -->
+                  <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></mat-row>
+              </mat-table>
+              </mat-card>
+              <mat-paginator [length]="resultsLength" [pageSize]="3" [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+            </div> 
+        </div>
+  
+        <div flex>
+              <app-proveedor-detalle [proveedor]="selectedProveedor"></app-proveedor-detalle>
+        </div> 
+    </mat-card>
+           
+    <div layout="column">
+              <h2>Agregar Proveedor</h2>
+                <div>
+                  <mat-card>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Nombre</mat-label>
+                      <input matInput for="new-proveedor" #proveedorName>
+                    </mat-form-field>
+                  </mat-card>
+                  <mat-card>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Id:</mat-label>
+                      <input matInput for="new-proveedor" #proveedorId>
+                    </mat-form-field>
+                  </mat-card>
+                  <mat-card>
+                  <!-- (click) passes input value to agregar() and then clears the input -->
+                  <button mat-icon-button color="primary" (click)="agregar(proveedorName.value, proveedorId.value ); proveedorName.value=''; proveedorId.value=''  " >
+                    <mat-icon>person_add</mat-icon> 
+                  </button>
+                  </mat-card>
+                </div>
+    </div>
+  </div>
+  
+<footer></footer>
 
