@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/proveedor-detalle/Archivos modificados-API/ClientesController.java
+src/app/proveedor-detalle/Archivos modificados-API/ClientesRepositorio.java
+src/app/proveedor-detalle/Archivos modificados-API/Decorador.java
+src/app/proveedor-detalle/Archivos modificados-API/Gestor.java
+src/app/proveedor-detalle/Archivos modificados-API/IGestor.java
